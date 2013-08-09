@@ -64,6 +64,7 @@ module Sipag
 
     # autoloading
     config.autoload_paths += %W(#{config.root}/lib)
+    config.load_paths << "#{RAILS_ROOT}/app/reports"
  
  ENV["RAILS_ASSET_ID"] = ""  
   end

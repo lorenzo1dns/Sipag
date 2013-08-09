@@ -8,6 +8,7 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'schema_plus'
 gem "bootstrap-datetimepicker-rails", "~> 0.0.11"
+gem 'prawn'
 #gem 'rack-offline' 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
