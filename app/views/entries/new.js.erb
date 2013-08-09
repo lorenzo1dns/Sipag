@@ -1,0 +1,21 @@
+<% if @ajax_search == true %>
+	$('#datoBenef').html('<%= escape_javascript(render("datoBeneficiario")) %>');
+<% end %>
+
+<% if @por_product == true %>
+	$('#tblProducts .busca .flat').val('<%= @productos.id %>');
+	$('#tblProducts .busca .descrip').val('<%= @productos.name %>');	 
+
+	 <% if @productos.presentacion == 'Polvo' %>
+	 		$('#tblProducts .busca .combo').html("<select   name='invoice_products[][unidad]'><option value='gr'>gr</option><option value='Kg'>Kg</option><option value='Onz'>Onz</option> <option value='Libra'>Libra</option></select>");
+	 <%	else %>
+	 		$('#tblProducts .busca .combo').html("<select   name='invoice_products[][unidad]'><option value='Litro'>Litro</option><option value='ml'>ml</option><option value='Galon'>Galon</option> <option value='Barril'>Barril</option><option value='Quinto'>Quinto</option></select>");
+	 <% end %>
+
+$('#tblProducts .busca .moneda').html('<%= escape_javascript(render("datoselect")) %>');
+$('#tblProducts .busca .valorL').html('<%= escape_javascript(render("valorselect")) %>');
+	
+
+	 $("#tblProducts tbody > tr").removeClass("busca");
+	  $("#findModalProduct").modal("hide");
+<% end %>

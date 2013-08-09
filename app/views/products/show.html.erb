@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>id:</b>
+  <%= @product.id %>
+</p>
+<p>
+  <b>Nombre:</b>
+  <%= @product.name %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @product.descripcion %>
+</p>
+
+<p>
+  <b>Presentacion:</b>
+  <%= @product.presentacion %>
+</p>
+
+
+
+<p>
+  <b>Ingredienteactivo:</b>
+  <%= @product.ingredienteActivo %>
+</p>
+
+<p>
+  <b>Compatibilidad:</b>
+  <%= @product.compatibilidad %>
+</p>
+
+<p>
+  <b>Modoaccion:</b>
+  <%= @product.modoAccion %>
+</p>
+
+<p>
+  <b>Toxicidad:</b>
+  <%= @product.toxicidad %>
+</p>
+
+<p>
+  <b>Antidoto:</b>
+  <%= @product.antidoto %>
+</p>
+
+<p>
+  <b>Maker:</b>
+  <%= @product.maker_id %>
+</p>
+
+<p>
+  <b>Distributor:</b>
+  <%= @product.distributor_id %>
+</p>
+
+
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

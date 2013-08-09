@@ -1,0 +1,19 @@
+<% provide(:title, 'Registro') %>
+<h1>Registro de Usuario</h1>
+
+
+<div class= "row">
+	<div class="span6 offset3">
+		<%= form_for(@user) do |f| %>
+			 <%= render 'shared/error_messages' %>			
+			<%= f.text_field  :name, :placeholder => "Nombre de usuario"%>				
+			<%= f.text_field  :name_complete, :placeholder => "Nombre completo" %>
+			<label class= "checkbox"> Usuario Administrador
+			<%= f.check_box  :admin%>
+			</label>			
+			<%= f.password_field :password, :placeholder => "Clave" %> 			
+			<%= f.password_field :password_confirmation, :placeholder => "Confirmar Clave" %>
+			<%= f.submit "Crear usuario", class: "btn btn-large btn-danger" %>
+		<% end %>
+	</div>
+</div>

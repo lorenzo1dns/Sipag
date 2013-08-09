@@ -1,0 +1,36 @@
+<div class="span5">
+        <div class="span8">
+          <div class="span5">
+            <label > Código </label>
+          </div> 
+            <div class="span7">
+            <%= text_field "entry", :beneficiary_id, value: @beneficiary.id, onKeyPress: "return VerificarEnter(event)", class: "numero", required: true %>
+          <%= hidden_field_tag :ajax_search, "true" %>
+            </div> 
+        </div> 
+
+        <div class="span4">
+              <table>
+                <tr>                   
+                  <td><a href="#" class="aceptarr" tabindex="-1" title="Buscar" id="aceptarBen"></a> </td>
+                  <td><a href="#" class="findYa" tabindex="-1" title="Buscar" role="button" data-target="#findModal" data-toggle="modal"></a> </td>
+                  <td><%= link_to "", new_beneficiary_path, :remote => true, class: "newAdd", title:"Nuevo", tabindex:"-1", :'data-target' =>"#newBenef", :'data-toggle' => "modal" %>
+                    </td>
+                 
+                </tr>
+              </table>
+                             
+          
+        </div> 
+      </div> 
+      <div class="span7">
+        <div class="span4">
+            <label > Nombre Completo </label>
+          </div> 
+             <div id="benef" class="content">
+                <div class="span8">
+                <input id="beneficiary_name" name="beneficiary[name]" type="text" readonly ="true" value="<%= @beneficiary.name %>" />
+              
+                </div>
+            </div> 
+       </div>

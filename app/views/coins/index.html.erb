@@ -1,0 +1,29 @@
+<h1>Listing coins</h1>
+
+<table>
+  <tr>
+    <th>Moneda</th>
+    <th>Pais</th>
+    <th>Simbolo</th>
+    <th>Valorlocal</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @coins.each do |coin| %>
+  <tr>
+    <td><%= coin.moneda %></td>
+    <td><%= coin.pais %></td>
+    <td><%= coin.simbolo %></td>
+    <td><%= coin.valorLocal %></td>
+    <td><%= link_to 'Show', coin %></td>
+    <td><%= link_to 'Edit', edit_coin_path(coin) %></td>
+    <td><%= link_to 'Destroy', coin, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Coin', new_coin_path %>

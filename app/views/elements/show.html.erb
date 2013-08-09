@@ -1,0 +1,23 @@
+<% provide(:title, @element.nombre) %>
+
+<div class="container-fluid">
+		  <div class="row-fluid">
+		    
+		    <div class="span8">
+		     <h1>
+		     	<%= @element.nombre %>
+		     </h1>
+
+		     <%= @element.descripcion %>
+		   
+		  </div>
+				
+		</div>
+<div class="btn-group span8">
+
+	           		<%= link_to 'Editar', edit_element_path(@element), class: "btn btn-primary", role: "button"  %> |
+					<%= link_to 'Regresar', elements_path, class: "btn btn-primary",role: "button"  %>
+                  
+           		</div>  
+</div>
+ 		

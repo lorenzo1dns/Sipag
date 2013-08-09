@@ -1,0 +1,47 @@
+ <div id="findModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 id="myModalLabel">Buscar Beneficiario</h3>
+
+          </div>
+          <div class="modal-body">
+            <input type="text" id="filter" placeholder="Buscar" class= "input-large search-query">
+            <br/>
+            <table class="table table-bordered" id="beneficiarioss">
+            <thead>
+            <tr>
+              <th class="hide">id</th>
+              <th>Nombre</th>
+              <th>Direccion</th>
+              <th>Telefono</th>
+              
+            </tr>
+            </thead>
+            
+          <% @beneficiaries.each do |beneficiary| %>
+            <tr>
+              <td class="hide"><%= beneficiary.id %></td>
+              <td>  <a style="height: 14px; padding-left: 5px;" title="Agregar"
+                    data-backdrop="static" data-keyboard="true"
+                    href="javascript:;"
+                    onclick="agregarBeneficiario('<%= beneficiary.id %>', '<%= beneficiary.name %>'); "> 
+                    <%= beneficiary.name %>
+                    </a>
+
+              </td>
+              <td><%= beneficiary.direccion %></td>
+              <td><%= beneficiary.telefono %></td>
+              
+ 
+
+
+            </tr>
+          <% end %>
+          </table>
+            
+          </div>
+          <div class="modal-footer">
+            <a class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</a>
+            
+          </div>
+</div> 

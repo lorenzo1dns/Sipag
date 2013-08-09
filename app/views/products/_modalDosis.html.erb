@@ -1,0 +1,53 @@
+ <div id="addModalDosis" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 id="myModalLabel">Agregar Dosis</h3>
+          </div>
+          <div class="modal-body">
+            <form id="formularioDosis">
+              <fieldset>
+                <div class="row-fluid">
+                    <div class="span12">
+                      <label>Cultivo</label>
+                     <%= text_field "dosis", :cultivo %>
+                      
+                    </div>
+                    
+                </div>    
+                <div class="row-fluid">
+                    
+                    <div class="span12">
+                      <label>Problema</label>
+                      <%= text_field "dosis", :problema %>
+                    </div> 
+                </div>   
+
+                <div class="row-fluid">
+                    <div class="span6">
+                      <label>Metodo de Aplicación</label>
+                      <%= select( "dosis",:metodo, [['Foliar','foliar'], ['Suelo','Suelo']]) %> 
+                      
+                    </div>
+                    <div class="span6">
+                      <label>Dosis</label>
+                      <%= text_field "dosis", :dosis %>
+                    </div> 
+                </div>             
+                <div class="row-fluid">
+                    <div class="span12">
+                      <label>Observación/Número de Aplicacions...</label>
+                     <%= text_area "dosis", :observacion, size: "30x3" %>
+                      
+                    </div>
+                   
+                </div>    
+              </fieldset>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <a class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</a>
+            <a id="saveDosis" href="#" class="btn btn-primary">Agregar</a>
+          </div>
+        </div> 
+
+   

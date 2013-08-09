@@ -1,0 +1,30 @@
+   <table class="table table-bordered">
+                <tr>
+                  <th></th>
+                  <th>Nombre</th>
+                  <th>Descripcion</th>
+                  <th>Tipo Plaga</th>   
+                 <% if current_user.admin? %> 
+                  <th></th>
+                  <th></th>
+                  <% end %>
+                </tr>
+
+              <% @plagues.each do |plaga| %>
+                <tr>
+                  <td><%= image_tag plaga.avatar.url(:thumb) %> </td>                  
+                      <td><%= link_to plaga.name, plaga %></td>                 
+                  <td><%= plaga.descripcion.first(18) %></td>
+                  <td><%= plaga.tipoPlaga %></td>   
+                  <% if current_user.admin? %> 
+                      <td><%= link_to 'Editar', edit_plague_path(plaga) %></td>  
+                      <th><%= link_to "Eliminar", plaga, method: :delete, 
+                      data: {confirm: "Estas seguro?"} %></th>
+                  <% end %>
+                    
+     
+
+                </tr>
+              <% end %>
+
+</table>

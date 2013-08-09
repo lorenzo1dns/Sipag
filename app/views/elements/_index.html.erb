@@ -1,0 +1,66 @@
+<%= render '/layouts/confirm_modal'%>
+
+<%= form_tag  elements_path, :method => 'get', :id => "ajax_search_form" do %>
+<div class="page-header">
+    <h1 class="pull-left">Elementos</h1>
+    <div class="pull-right">
+        <%= link_to new_element_path, :remote => true,
+        :class => "btn btn-primary", :style => "margin-right:10px; height:15px;" do%>
+            <i class="icon-star icon-white"></i> Nuevo Elemento
+        <% end %>
+
+        <div id="quicksearch" class="search-box">
+            <%= text_field_tag :search, params[:search], :placeholder => "Search"  %>
+            
+        </div>
+        <%= hidden_field_tag :ajax_search, "true" %>
+    </div>
+</div>
+<div class="row-fluid">
+    <div id="table_div" class="span12">
+        <%= render :partial => 'element_table' %>
+    </div>
+</div>
+<% end %>
+
+<script type="text/javascript">
+
+ $(function(){
+    $("a[data-remote='true']").bind("click", function(){
+        history.pushState({
+            path:this.href
+            }, "", this.href);
+    });
+    
+    $("#table_div .pagination a, #table_div th a").on("click", function(){
+        $.getScript(this.href);
+        history.pushState({
+            path:this.href
+            }, "", this.href.replace("ajax_search=true", "ajax_search="));
+        return false;
+    });
+    
+    $("#quicksearch input").bind("keyup",function(){
+        var form = $("#ajax_search_form");
+        var url = form.attr('action') + '?' + form.serialize();
+        url = url.replace("ajax_search=true", "ajax_search=");
+        history.pushState({
+            path:url
+        }, "", url);
+
+        $.get(form.attr("action"), form.serialize(), null, "script");        
+    });
+
+
+});
+
+
+$(function () {  
+    $(window).on("popstate", function () {  
+        $.getScript(location.href);  
+    });  
+});
+</script>
+
+
+

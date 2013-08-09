@@ -1,0 +1,18 @@
+<% provide(:title, 'Enfermedades') %>
+<% provide(:boton, 'Guardar Cambios') %>
+<div class="page-header">
+    <h1 class="pull-left">Editar Elemento</h1>
+    <div class="pull-right">
+        <%= link_to new_element_path, :remote => true,
+        :class => "btn btn-primary", :style => "margin-right:10px; height:15px;" do%>
+        <i class="icon-star icon-white"></i> Nuevo Elemento
+        <% end %>
+    </div>
+</div>
+
+<div class= "row-fluid">
+	<div class="span12">
+		<%= render 'form' %>
+
+	</div>
+</div>

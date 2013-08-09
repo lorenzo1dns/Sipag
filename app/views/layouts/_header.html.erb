@@ -1,0 +1,52 @@
+	<header class="navbar navbar-fixed-top navbar-inverse">
+	<div class="navbar-inner">
+		<div class="container">
+			<%= link_to "SIPAG",'#', id: "logo" %>
+			<% if signed_in? %>
+			<nav>
+				<ul class= "nav pull-right">
+					<li><%= link_to current_user.name, '#' %></li>
+					<li> <%= link_to('#')  do %> 
+						 <i class="icon-home icon-white"></i>
+						 Principal
+						<% end %>
+					 	</li>
+					<li id = "fat-menu" class ="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								Bodega <b class = "caret"></b>
+							</a>
+							<ul class="dropdown-menu">
+				                <li><%= link_to "Productos", products_path %></li>
+				                <li><%= link_to "Registrar Entrada", '#' %></li>
+				                <li><%= link_to "Registrar Salida", '#' %></li>
+				                <li class="divider"></li>
+				                <li><%= link_to "Inventario", '#' %></li>
+				                
+				                
+				             </ul>
+					</li>	
+					<li id = "fat-menu" class= "dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								Parametros <b class = "caret"></b>
+							</a>
+							<ul class="dropdown-menu">
+				                <li><%= link_to "Elementos", elements_path %></li>
+				                <li><%= link_to "Plagas", plagues_path %></li>
+				                <li><%= link_to "Enfermedades", sicks_path %></li>
+				                <li class="divider"></li>
+				                <li><%= link_to "Distribuidores", distributors_path %></li>
+				                <li><%= link_to "Fabricantes", makers_path %></li>			                
+				                <li class="divider"></li>
+				                <li><%= link_to "Tipo de Productos", tipo_products_path %></li>			                
+				                
+				             </ul>
+					</li>	
+					<li> <%= link_to "Cerrar sesion", signout_path, method: "delete" %>	</li>
+					
+				</ul>
+			</nav>
+			<% end %>
+		</div>
+	</div>
+
+	</header>

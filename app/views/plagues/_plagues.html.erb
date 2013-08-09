@@ -1,0 +1,24 @@
+<!-- opcion para offline -->
+
+ <table class="table table-bordered" id= "items"> 
+ </table>
+
+
+<script type="text/html" id="item_template">  
+
+  
+   <tr>
+                  <td> </td>                  
+                      <td>${name}</td>                 
+                  <td>${descripcion}</td>
+                  <td>${tipoPlaga}</td>   
+                 <% if current_user.admin? %> 
+                  <th></th>
+                  <th></th>
+                  <% end %>
+                    
+     
+
+                </tr>
+</script>  
+  

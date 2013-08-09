@@ -1,0 +1,13 @@
+
+  <ul>  
+    <% for plaga in @plagues %>  
+    <li class="arrow">  
+      <%= link_to h(plaga.name), plaga %>  
+      
+    </li>  
+    <% end %>  
+  </ul>  
+  <ul><li class="arrow"><%= link_to "New Project", plaguen_path %></li></ul>  
+
+
+     

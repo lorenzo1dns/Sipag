@@ -1,0 +1,24 @@
+<table class="table table-bordered">
+  <tr>
+    <th></th>
+    <th>Nombre</th>
+    <th>Descripcion</th>
+    <th>Familia</th>
+    <th>Daño</th>
+    
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sicks.each do |sick| %>
+  <tr>
+    <td><%= image_tag sick.avatar.url(:thumb) %> </td> 
+    <td><%= link_to sick.name, sick %></td>
+    <td><%= sick.descripcion.first(35) %></td>
+    <td><%= sick.familia %></td>
+    <td><%= sick.danio.first(35) %></td>    
+    <td><%= link_to 'Editar', edit_sick_path(sick) %></td>
+    <td><%= link_to 'Eliminar', sick, confirm: 'Esta seguro?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>

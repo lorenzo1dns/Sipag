@@ -1,0 +1,24 @@
+<% provide(:title, 'Sesion') %>
+
+<br/>
+<br/>
+<br/>
+
+<div class="span6 offset3" >
+  <div class="hero-unit inicioo" >
+	<h1> Iniciar</h1>
+  <br/>
+    <%= form_for(:session, url: sessions_path) do |f| %>
+
+      
+      <%= f.text_field :name,  placeholder: "Nombre de Usuario" %>
+
+      
+      <%= f.password_field :password, placeholder: "Contraseña" %>
+
+      <%= f.submit "Entrar", class: " offset4 btn  btn-primary" %>
+    <% end %>
+    
+  </div>
+  </div>
+

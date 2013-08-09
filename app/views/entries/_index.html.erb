@@ -1,0 +1,29 @@
+<h1>Listing entries</h1>
+
+<table>
+  <tr>
+    <th>Beneficiary</th>
+    <th>Fecha</th>
+    <th>Tipoentrada</th>
+    <th>Output</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @entries.each do |entry| %>
+  <tr>
+    <td><%= entry.beneficiary_id %></td>
+    <td><%= entry.fecha %></td>
+    <td><%= entry.tipoEntrada %></td>
+    <td><%= entry.salida %></td>
+    <td><%= link_to 'Show', entry %></td>
+    <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
+    <td><%= link_to 'Destroy', entry, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Entry', new_entry_path %>

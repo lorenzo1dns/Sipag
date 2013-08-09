@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title><%= full_title(yield(:title)) %></title>
+  <%= javascript_include_tag "application" %>
+ 
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+        
+  
+  <link rel="icon" type="image/x-icon" href="/assets/sandicon.png">  
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/sandicon.png">  
+  <%= csrf_meta_tags %>
+  <script type="text/javascript">
+
+  function show_confirm_modal(path, question){
+    $('#confirm-modal #question').text(question); 
+    $('#confirm-modal').show();
+    $('#confirm-modal #delete').bind("click", function(){
+        $.ajax({
+            async: false,
+            type: "DELETE",
+            url: path,
+            success: function() {$('#confirm-modal').modal('hide');},
+            dataType: 'script'
+        });   
+        $('#confirm-modal').modal('hide');    
+    });
+    
+}
+
+
+
+  </script>
+
+
+  
+  
+<%= render 'layouts/shim' %>  
+</head>
+<body>
+	<p>  
+ <% if mobile_device? %>
+    <%= link_to "Full Site", :mobile => 0 %>
+  <% else %>
+    <%= link_to "Mobile Site", :mobile => 1 %>
+  <% end %>
+</p>  
+		
+	<%=render 'layouts/header' %>
+	<div class="container">
+		 <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      	<% end %>
+        <div id ="messages">
+                <%= render '/layouts/messages' %>
+            </div>
+        <div id="body_content" class="content">
+                <%= yield %>
+            </div>
+		 <%= debug(params) if Rails.env.development? %>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+<% provide(:title, 'Distruibuidor') %>
+<% provide(:boton, 'Salvar Distribuidor') %>
+<h1>Nuevo distribuidor</h1>
+
+<div class= "row">
+	<div class="span6 offset3">
+		<%= render 'form' %>
+
+	</div>
+</div>
+<%= link_to 'Show', @distributor %> |
+<%= link_to 'Back', distributors_path %>

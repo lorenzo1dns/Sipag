@@ -1,0 +1,22 @@
+<% provide(:title, 'Usuarios') %>
+<h1>Usuarios</h1>
+
+<table class="table table-bordered">
+  <tr>
+    <th>Nombre</th>
+    <th>Nombre Completo</th>
+    
+    <th></th>
+    
+  </tr>
+
+<% @users.each do |us| %>
+  <tr>
+
+    
+        <td><%= link_to us.name, us %></td>    
+    <td><%= us.name_complete %></td>    
+    <td><%= link_to 'Editar', edit_user_path(us) %></td>    
+  </tr>
+<% end %>
+</table>

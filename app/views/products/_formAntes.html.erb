@@ -1,0 +1,236 @@
+
+<div class="container-fluid hero-unit formula">
+  <%= form_for(@product) do |f| %>
+    <% if @product.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+        <ul>
+        <% @product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+   <div class="row-fluid">
+      <div class="span4">
+             <label>Nombre</label>
+             <%= f.text_field :nombre, class: "span12", placeholder: "Nombre", required: 'True' %>           
+      </div>
+       <div class="span4">
+         <label>Ingrediente Activo</label>
+            <%= f.text_field :ingredienteActivo, class: "span12", placeholder: "Ingrediente Activo", required: 'True'  %>
+                    
+      </div>
+       <div class="span4">
+        <label>Antidoto</label>
+            <%= f.text_field :antidoto, class: "span12", placeholder: "Antidoto" %>
+                    
+      </div>
+      
+  
+    </div>
+    <div class="row-fluid">
+              
+              <div class="span12">
+                <label>Descripción</label>
+               <%= f.text_area :descripcion, class: "span12", placeholder: "Descripción",  size: "60x2"  %>          
+            </div>
+            
+    </div>
+
+   <div class="row-fluid">
+      <div class="span4">
+        
+            <%= f.label "Presentación" %>
+           
+            <%= f.select(:presentacion, [['Polvo','Polvo'], ['Liquido','Liquido']]) %> 
+         
+                    
+      </div>
+      <div class="span4">
+               <%= f.label "Tipo de Producto" %>
+            <%= f.select(:tipoProducto, [['Fertilizante','Fertilizante'], ['Insecticida','Insecticida'],
+                                          ['Fungicida','Fungicida'],['Bactericida','Bactericida'],['Acarida','Acaricida']]) %>           
+      </div> 
+      <div class="span4">
+               <%= f.label "Modo de Acción" %>
+           <%= f.select(:modoAccion, [['Sistemico','Sistemico'], ['Contacto','Contacto']]) %>           
+      </div> 
+  
+   </div>
+    <br/>
+    <label>Formulación</label>
+  <div class="row-fluid">
+    <!-- -------------------------------------FORMULACION -->
+   
+   
+      <div class= "span6 well formula">
+            
+        <table class="table table-hover table-bordered" id="tablita">
+                          <thead>
+                            <tr>
+                              <th class= "hide">id</th>
+                              <th class= "hide">id</th>
+                              <th>Elemento</th>
+                              <th>Porcentaje</th>                        
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+        </table>
+        <div class="btn-group span4">
+            <a id="kada" class="btn btn-primary" role="button" data-target="#addModal" data-toggle="modal">Nueva</a>
+            
+            <a class="btn btn-primary  dropdown-toggle" data-toggle="dropdown" href="#">Eliminar 
+              <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a id="delete">Eliminar seleccionada</a></li>
+                          <li><a id="delete-all">Eliminar Todas</a></li>
+                        </ul>
+                        
+        </div>  
+          
+               
+      </div> 
+
+      <div class= "span6 well formula">
+        <% for plaga in Plague.find(:all) %>    
+            <div>    
+              <%= check_box_tag "product[plague_ids][]", plaga.id, @product.plagues.include?(plaga) %>    
+              <%= plaga.nombre %>    
+            </div>    
+        <% end %>    
+      </div>  
+    
+
+  </div>
+   <div class="row-fluid">
+              
+              
+             <div class="span6">
+                 <label>Compatibilidad</label>
+         <%= f.text_area :compatibilidad, class: "span12", placeholder: "Compatibilidad",  size: "60x3"  %>               
+            </div>
+            <div class="span6">
+                <label>Toxicidad</label>
+              <%= f.text_area :toxicidad, class: "span12", placeholder: "Toxicidad",  size: "60x3"  %>           
+            </div>
+    </div>
+  
+
+   <div class="row-fluid">
+      <div class="span6">
+            <!-- Aqui va el fabricante -->
+            <label>Fabricante</label>
+            <%=f.collection_select :maker_id, Maker.all,:id,:nombre %>            
+                    
+      </div>
+      <div class="span6">
+              <!-- Aqui va el distribuidor -->
+              <label>Distribuidor</label>
+              <%=f.collection_select :distributor_id, Distributor.all,:id,:nombre %>
+              
+      </div> 
+  
+   </div>
+
+   <% if yield(:boton) == 'Salvar Cambios' %>
+        </div>
+        <div class="modal-footer">
+                    <a class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</a>
+                   <%= f.submit yield(:boton), class: "btn btn-primary" %>
+               </div>
+  <% else %>
+          <br/>
+          <%= f.submit yield(:boton), class: "btn btn-primary" %>
+  <% end  %>
+
+    <!-- MODAL -->
+       <%= render 'modalFormula' %>
+<% end %>
+
+</div>
+  <script type="text/javascript">
+    /* Algo de funcionalidad basica... */
+     
+     $(".nada").numeric();
+      $("#select-all").click(function(){
+        $("tbody > tr").addClass("info");
+      });
+
+      $("#unselect-all").click(function(){
+        $("tbody > tr").removeClass("info");
+      });
+
+      $("#save").click(function(){
+          save();
+      });
+
+      $("#delete").click(function(){
+        $(".info").remove();
+      });
+
+      $("#delete-all").click(function(){
+        $("tbody").empty();
+      });
+
+      function toggleSelected(tr) {
+        $(tr).toggleClass("info");          
+      }
+
+      $("#kada").click(function(){
+        limpiar();
+      });
+
+      function limpiar()
+      {        
+          $("#otro_porcentaje").val("");
+       }
+
+      function resetForm() {
+        $("#age").val("");
+        $("#name").val("");
+        $("#surname").val("");
+        $(".memb-button").removeClass("active");
+        $("#approved-memb").addClass("active");
+      }
+
+      function save() {
+            var found = false;
+
+            if ($("#otro_porcentaje").val()  =="")
+               
+            {
+              alert("La cantidad es obligatoria");
+              return false;
+            }
+            $('#tablita tr').each(function () {
+                var val = $(this).find("td").eq(1).html();
+                if (val == $("#otro_element_id").val()) {
+
+                  found = true;
+                }
+               });
+
+        if (found == true)
+        {
+
+            alert("Ese elemento ya se agregó")
+
+        }
+        else
+        {
+        var approved = $("#approved-memb").hasClass("active");
+        var colourClass = approved ? "success" : "error"
+        var status = approved ? "Approved" : "Rejected"
+        var row = "<tr class='"+ colourClass +"'' onclick='toggleSelected(this)'><td class= 'hide'><input id='formulations_0_element_id' name='formulations[][element_id]' value='"+ $("#otro_element_id").val() +"' type='text' /></td><td class= 'hide'>"+ $("#otro_element_id option:selected").val() +"</td><td>"+ $("#otro_element_id option:selected").html() +"</td><td class='hide'><input id='formulations_0_porcentaje' name='formulations[][porcentaje]' value='"+ $("#otro_porcentaje").val() +"' type='text' /></td><td>"+ $("#otro_porcentaje").val() +"</td></tr>";
+        $("tbody").append(row);
+        resetForm();
+        $("#addModal").modal("hide");  
+        }
+      }
+
+    </script>

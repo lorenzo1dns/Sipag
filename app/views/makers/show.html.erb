@@ -1,0 +1,24 @@
+<% provide(:title, @maker.nombre) %>
+
+<div class="container-fluid">
+		  <div class="row-fluid">
+		    
+		    <div class="span8">
+		     <h1>
+		     	<%= @maker.nombre %>
+		     </h1>
+
+		     <%= @maker.descripcion %>
+		     
+		     País:  <%= @maker.pais
+		  </div>
+				
+		</div>
+<div class="btn-group span8">
+
+	           		<%= link_to 'Editar', edit_maker_path(@maker), class: "btn btn-primary", role: "button"  %> |
+					<%= link_to 'Regresar', makers_path, class: "btn btn-primary",role: "button"  %>
+                  
+           		</div>  
+</div>
+ 		

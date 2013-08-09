@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Moneda:</b>
+  <%= @coin.moneda %>
+</p>
+
+<p>
+  <b>Pais:</b>
+  <%= @coin.pais %>
+</p>
+
+<p>
+  <b>Simbolo:</b>
+  <%= @coin.simbolo %>
+</p>
+
+<p>
+  <b>Valorlocal:</b>
+  <%= @coin.valorLocal %>
+</p>
+
+
+<%= link_to 'Edit', edit_coin_path(@coin) %> |
+<%= link_to 'Back', coins_path %>

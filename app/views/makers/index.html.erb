@@ -1,0 +1,36 @@
+<% provide(:title, 'Fabricantes') %>
+<% provide(:boton, 'Salvar Cambios') %>
+<h1>Lista de Fabricantes</h1>
+
+
+<div class="container-fluid">
+      <div class="row-fluid">
+         <div class="span6"> <!-- 1era Columna -->
+           <div class="btn-group span4">
+                  <a class="btn btn-primary span6" href="#addModal" role="button" data-toggle="modal">Nuevo</a> 
+           </div>  
+        </div> 
+        <%= form_tag(makers_path, :method => 'get', class: "form-search") do %>  
+                    <p>  
+                      <%= text_field_tag :search,  params[:search], class: "input-medium search-query" %>  
+                      <%= submit_tag "Buscar", :nombre => nil, class: "btn" %>  
+                    </p>  
+        <% end %>  
+       
+          <%= render 'maker' %>  
+        <%= will_paginate @makers %>
+         
+         <!-- MODAL -->
+              <div id="addModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h3 id="myModalLabel">Crear Nuevo Fabricante</h3>
+                </div>
+                <div class="modal-body">
+
+                  <%= render 'form' %>
+
+                
+              </div>
+      </div>
+</div>

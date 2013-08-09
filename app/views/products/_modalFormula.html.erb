@@ -1,0 +1,28 @@
+ <div id="addModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 id="myModalLabel">Agregar Formula</h3>
+          </div>
+          <div class="modal-body">
+            <form>
+              <fieldset>
+                <div class="row-fluid">
+                    <div class="span6">
+                      <label>Elemento</label>
+                     <%= select("otro",:element_id, Element.all.collect  {|p| [p.nombre, p.id] } ) %>
+                      
+                    </div>
+                    <div class="span6">
+                      <label>Porcentaje</label>
+                      <%= text_field "otro", :porcentaje, class: "nada" %>
+                    </div> 
+                </div>             
+                    
+              </fieldset>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <a class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</a>
+            <a id="save" href="#" class="btn btn-primary">Agregar</a>
+          </div>
+        </div> 

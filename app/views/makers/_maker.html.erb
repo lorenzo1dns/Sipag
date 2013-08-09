@@ -1,0 +1,21 @@
+<table class="table table-bordered">
+  <tr>
+    <th>Nombre</th>
+    <th>Descripcion</th>
+    <th>Pais</th>
+    <th></th>
+    <th></th>
+   
+  </tr>
+
+<% @makers.each do |maker| %>
+  <tr>
+    <td><%= link_to maker.nombre, maker %></td>
+    <td><%= maker.descripcion %></td>
+    <td><%= maker.pais %></td>
+    
+    <td><%= link_to 'Editar', edit_maker_path(maker) %></td>
+    <td><%= link_to 'Eliminar', maker, confirm: 'Está seguro?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>

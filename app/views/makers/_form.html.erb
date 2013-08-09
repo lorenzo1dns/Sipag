@@ -1,0 +1,35 @@
+<%= form_for(@maker) do |f| %>
+   <%= render 'shared/error_messages_maker' %>
+
+
+ <div class="row-fluid">
+                      <div class="span6">
+                         <%= f.label :nombre %>
+                         <%= f.text_field :nombre, required: 'True'  %>  
+                      </div>
+                      <div class="span6">
+                         <%= f.label :pais %>
+                          <%= f.text_field :pais %>
+                      </div> 
+</div>
+      <div class="row-fluid">
+                  <div class="span6">
+                     <%= f.label :descripcion %>
+                  <%= f.text_area :descripcion, size: "60x6"%>  
+                  </div>
+               
+      </div>
+     
+    
+     
+    <% if yield(:boton) == 'Salvar Cambios' %>
+        </div>
+        <div class="modal-footer">
+                    <a class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</a>
+                   <%= f.submit yield(:boton), class: "btn btn-primary" %>
+               </div>
+      <% else %>
+          <%= f.submit yield(:boton), class: "btn btn-primary" %>
+      <% end  %>
+
+<% end %>

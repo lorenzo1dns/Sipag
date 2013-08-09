@@ -1,0 +1,18 @@
+<% provide(:title, 'Producto') %>
+<% provide(:boton, 'Guardar Cambios') %>
+<h1>Editar Producto</h1>
+
+<div class= "row">
+	<div class="span12">
+		<%= render 'form' %>
+
+	</div>
+</div>
+
+<%= link_to 'Ver', @product %> |
+<%= link_to 'Regresar', products_path %>
+
+
+
+
+

@@ -1,0 +1,54 @@
+<%= form_for(@beneficiary, remote: true) do |f| %>
+  <% if @beneficiary.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@beneficiary.errors.count, "error") %> prohibited this beneficiary from being saved:</h2>
+
+      <ul>
+      <% @beneficiary.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+ <div class="row-fluid">
+                      <div class="span8">
+                         <%= f.label :name %><br />
+                        <%= f.text_field :name %>
+                      </div>
+                      
+</div>
+      <div class="row-fluid">
+                  <div class="span8">
+                     <%= f.label :direccion %>
+                  <%= f.text_area :direccion, size: "60x6"%>  
+                  </div>
+               
+      </div>
+ <div class="row-fluid">
+                      <div class="span8">
+                         <%= f.label :telefono %><br />
+                        <%= f.text_field :telefono %>
+                      </div>
+                      
+</div>
+
+<% if yield(:boton) == 'Salvar cambios' %>
+        </div>
+        <div class="modal-footer">
+                    <a class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</a>
+                   <%= f.submit yield(:boton), class: "btn btn-primary", id: "saveBen" %>
+               </div>
+      <% else %>
+          <%= f.submit yield(:boton), class: "btn btn-primary"%>
+      <% end  %>
+<% end %>
+
+
+<script type="text/javascript">
+
+$("#saveBen").click(function(){
+           $("#newBenef").modal("hide"); 
+      });
+</script>

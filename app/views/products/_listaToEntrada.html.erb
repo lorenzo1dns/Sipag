@@ -1,0 +1,29 @@
+<input type="text" id="filter" placeholder="Buscar" class= "input-large search-query">
+            <br/>
+            <table class="table table-bordered" id="beneficiarioss">
+            <thead>
+            <tr>
+              
+              <th>Código</th>
+              <th>Descripción</th>
+              <th>Ingrediente Activo</th>
+              
+            </tr>
+            </thead>
+          <% @products.each do |product| %>
+            <tr>
+              <td>
+
+                
+                  <%= link_to product.id, "/entries/new?utf8=✓&por_product=true&idProd=#{product.id.to_s}", :remote => true %>
+                
+              </td>
+              <td>  <%= link_to product.name, "/entries/new?utf8=✓&por_product=true&idProd=#{product.id.to_s}", :remote => true %>
+                   
+              </td>
+              <td><%= product.ingredienteActivo %></td>
+              
+
+            </tr>
+          <% end %>
+          </table>

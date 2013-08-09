@@ -1,0 +1,1 @@
+<select id='coin_id'  name="invoice_products[][coin_id]" onchange="CambiarValor();"> <%= options_from_collection_for_select(Coin.all, :id, :simbolo) %> </select>

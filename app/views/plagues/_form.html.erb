@@ -1,0 +1,26 @@
+			<%= form_for(@plague, :html => {multipart: true}) do |f| %>		
+			 <%= render 'shared/error_messages_plague' %>	
+			<%= f.label :name, "Nombre Plaga" %>
+			<%= f.text_field  :name, required: 'True'  %>
+			<%= f.label :tipoPlaga, "Tipo de Plaga" %> 
+			<%= f.select(:tipoPlaga, [['Dípteros','Dipteros'], ['Lepidópteros','Lepidopteros']]) %>		
+			<%= f.label :descripcion, "Descripción" %>
+			<%= f.text_area  :descripcion, size: "60x6" %>
+			<%= f.label :danio, "Daño que causa" %>
+			<%= f.text_area  :danio, size: "60x6" %>	
+
+			 <div id="image_view">
+			 	<%=image_tag @plague.avatar.url %>
+			 </div>			
+			<%= f.file_field :avatar %>
+			<% if yield(:boton) == 'Salvar Cambios' %>
+				</div>
+				<div class="modal-footer">
+	                  <a class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</a>
+	                 <%= f.submit yield(:boton), class: "btn btn-primary" %>
+	             </div>
+			<% else %>
+					<%= f.submit yield(:boton), class: "btn btn-primary" %>
+			<% end  %>
+			
+			<% end %>

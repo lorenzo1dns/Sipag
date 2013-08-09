@@ -1,0 +1,27 @@
+<h1>Listing beneficiaries</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Direccion</th>
+    <th>Telefono</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @beneficiaries.each do |beneficiary| %>
+  <tr>
+    <td><%= beneficiary.name %></td>
+    <td><%= beneficiary.direccion %></td>
+    <td><%= beneficiary.telefono %></td>
+    <td><%= link_to 'Show', beneficiary %></td>
+    <td><%= link_to 'Edit', edit_beneficiary_path(beneficiary) %></td>
+    <td><%= link_to 'Destroy', beneficiary, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Beneficiary', new_beneficiary_path %>

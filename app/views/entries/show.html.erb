@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Beneficiary:</b>
+  <%= @entry.beneficiary_id %>
+</p>
+
+<p>
+  <b>Fecha:</b>
+  <%= @entry.fecha %>
+</p>
+
+<p>
+  <b>Tipoentrada:</b>
+  <%= @entry.tipoEntrada %>
+</p>
+
+<p>
+  <b>Output:</b>
+  <%= @entry.salida %>
+</p>
+
+
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Back', entries_path %>
