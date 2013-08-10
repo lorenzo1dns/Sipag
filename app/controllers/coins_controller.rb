@@ -3,8 +3,11 @@ class CoinsController < ApplicationController
   # GET /coins.json
   def index
     @coins = Coin.all
-
+    output = HelloReport.new.to_pdf(@coins)
     respond_to do |format|
+       format.pdf { 
+        send_data output, :filename => "hello.pdf", :type => "application/pdf", :disposition => "inline"
+      }
       format.html # index.html.erb
       format.json { render json: @coins }
     end
@@ -14,8 +17,10 @@ class CoinsController < ApplicationController
   # GET /coins/1.json
   def show
     @coin = Coin.find(params[:id])
-
+    
     respond_to do |format|
+
+     
       format.html # show.html.erb
       format.json { render json: @coin }
     end

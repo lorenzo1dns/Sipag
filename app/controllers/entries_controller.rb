@@ -14,9 +14,12 @@ class EntriesController < ApplicationController
   # GET /entries/1.json
   def show
     @entry = Entry.find(params[:id])
-
+    entrada = ComprobanteEntrada.new.to_pdf(params[:id])
     respond_to do |format|
       format.html # show.html.erb
+      format.pdf { 
+        send_data entrada, :filename => "ComprobanteEntrada.pdf", :type => "application/pdf", :disposition => "inline"
+      }
       format.json { render json: @entry }
     end
   end
@@ -108,10 +111,11 @@ class EntriesController < ApplicationController
                    
            
             
-
-            respond_to do |format|  
-              format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
-              format.json { render json: @entry, status: :created, location: @entry }
+            
+            respond_to do |format| 
+              
+              format.html { redirect_to entry_path(@entry,:format => "pdf") }
+                
             end
         end
         rescue 
