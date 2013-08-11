@@ -38,15 +38,59 @@ ActiveRecord::Schema.define(:version => 20130808133358) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "makers", :force => true do |t|
+    t.string   "nombre"
+    t.text     "descripcion"
+    t.string   "pais"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "tipo_products", :force => true do |t|
+    t.string   "name"
+    t.string   "descripcion"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "color"
+  end
+
+  create_table "products", :force => true do |t|
+    t.string   "name"
+    t.text     "descripcion"
+    t.string   "presentacion"
+    t.integer  "tipo_product_id"
+    t.string   "ingredienteActivo"
+    t.text     "compatibilidad"
+    t.string   "modoAccion"
+    t.string   "toxicidad"
+    t.string   "antidoto"
+    t.integer  "maker_id"
+    t.integer  "distributor_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.text     "uso"
+    t.index ["tipo_product_id"], :name => "ltered_products_tipo_product_id"
+    t.index ["maker_id"], :name => "ltered_products_maker_id"
+    t.index ["distributor_id"], :name => "ltered_products_distributor_id"
+    t.index ["distributor_id"], :name => "fk__products_distributor_id"
+    t.index ["maker_id"], :name => "fk__products_maker_id"
+    t.index ["tipo_product_id"], :name => "fk__products_tipo_product_id"
+    t.foreign_key ["distributor_id"], "distributors", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_products_distributor_id"
+    t.foreign_key ["maker_id"], "makers", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_products_maker_id"
+    t.foreign_key ["tipo_product_id"], "tipo_products", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_products_tipo_product_id"
+  end
+
   create_table "doses", :force => true do |t|
     t.string   "cultivo"
     t.string   "problema"
     t.string   "metodoAplicacion"
     t.string   "dosis"
     t.text     "observacion"
+    t.integer  "product_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
-    t.integer  "product_id"
+    t.index ["product_id"], :name => "fk__doses_product_id"
+    t.foreign_key ["product_id"], "products", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_doses_product_id"
   end
 
   create_table "elements", :force => true do |t|
@@ -63,27 +107,8 @@ ActiveRecord::Schema.define(:version => 20130808133358) do
     t.integer  "salida"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.index ["beneficiary_id"], :name => "ltered_entries_beneficiary_id"
-    t.index ["salida"], :name => "fk__entries_output_id"
     t.index ["beneficiary_id"], :name => "fk__entries_beneficiary_id"
     t.foreign_key ["beneficiary_id"], "beneficiaries", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_entries_beneficiary_id"
-  end
-
-  create_table "products", :force => true do |t|
-    t.string   "name"
-    t.text     "descripcion"
-    t.string   "presentacion"
-    t.string   "ingredienteActivo"
-    t.text     "compatibilidad"
-    t.string   "modoAccion"
-    t.string   "toxicidad"
-    t.string   "antidoto"
-    t.integer  "maker_id"
-    t.integer  "distributor_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-    t.text     "uso"
-    t.integer  "tipo_product_id"
   end
 
   create_table "entry_products", :force => true do |t|
@@ -106,6 +131,10 @@ ActiveRecord::Schema.define(:version => 20130808133358) do
     t.string   "porcentaje"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.index ["product_id"], :name => "fk__formulations_product_id"
+    t.index ["element_id"], :name => "fk__formulations_element_id"
+    t.foreign_key ["element_id"], "elements", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_formulations_element_id"
+    t.foreign_key ["product_id"], "products", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_formulations_product_id"
   end
 
   create_table "inventaries", :force => true do |t|
@@ -154,14 +183,6 @@ ActiveRecord::Schema.define(:version => 20130808133358) do
     t.foreign_key ["product_id"], "products", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_invoice_products_product_id"
   end
 
-  create_table "makers", :force => true do |t|
-    t.string   "nombre"
-    t.text     "descripcion"
-    t.string   "pais"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "plagues", :force => true do |t|
     t.string   "name"
     t.text     "descripcion",         :limit => 255
@@ -180,6 +201,10 @@ ActiveRecord::Schema.define(:version => 20130808133358) do
     t.integer  "product_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.index ["product_id"], :name => "fk__plagues_products_product_id"
+    t.index ["plague_id"], :name => "fk__plagues_products_plague_id"
+    t.foreign_key ["plague_id"], "plagues", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_plagues_products_plague_id"
+    t.foreign_key ["product_id"], "products", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_plagues_products_product_id"
   end
 
   create_table "sicks", :force => true do |t|
@@ -200,14 +225,10 @@ ActiveRecord::Schema.define(:version => 20130808133358) do
     t.integer  "product_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "tipo_products", :force => true do |t|
-    t.string   "name"
-    t.string   "descripcion"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "color"
+    t.index ["product_id"], :name => "fk__sicks_products_product_id"
+    t.index ["sick_id"], :name => "fk__sicks_products_sick_id"
+    t.foreign_key ["product_id"], "products", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_sicks_products_product_id"
+    t.foreign_key ["sick_id"], "sicks", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_sicks_products_sick_id"
   end
 
   create_table "users", :force => true do |t|

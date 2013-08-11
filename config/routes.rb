@@ -36,6 +36,7 @@ Sipag::Application.routes.draw do
   match '/bodega', to: 'bodega#index'
   match '/toEntry', to: 'products#toEntry'
   match '/llevar', to: 'products#llevar'
+  match '/produccion', to: 'bodega#index'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

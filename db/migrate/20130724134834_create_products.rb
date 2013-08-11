@@ -4,7 +4,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :nombre
       t.text :descripcion
       t.string :presentacion
-      t.string :tipoProducto
+      t.integer :tipo_product_id
       t.string :ingredienteActivo
       t.text :compatibilidad
       t.string :modoAccion

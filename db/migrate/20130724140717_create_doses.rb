@@ -6,6 +6,7 @@ class CreateDoses < ActiveRecord::Migration
       t.string :metodoAplicacion
       t.string :dosis
       t.text :observacion
+      t.integer :product_id
 
       t.timestamps
     end
