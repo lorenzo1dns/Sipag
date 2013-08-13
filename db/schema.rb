@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130808133358) do
+ActiveRecord::Schema.define(:version => 20130811200947) do
 
   create_table "beneficiaries", :force => true do |t|
     t.string   "name"
@@ -205,6 +205,13 @@ ActiveRecord::Schema.define(:version => 20130808133358) do
     t.index ["plague_id"], :name => "fk__plagues_products_plague_id"
     t.foreign_key ["plague_id"], "plagues", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_plagues_products_plague_id"
     t.foreign_key ["product_id"], "products", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_plagues_products_product_id"
+  end
+
+  create_table "regions", :force => true do |t|
+    t.string   "name"
+    t.text     "descripcion"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "sicks", :force => true do |t|

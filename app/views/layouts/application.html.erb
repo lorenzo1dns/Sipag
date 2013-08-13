@@ -11,6 +11,7 @@
   <%= csrf_meta_tags %>
   <script type="text/javascript">
 
+
   function show_confirm_modal(path, question){
     $('#confirm-modal #question').text(question); 
     $('#confirm-modal').show();
@@ -24,8 +25,14 @@
         });   
         $('#confirm-modal').modal('hide');    
     });
-    
+     $('#confirm-modal').show();
 }
+
+$(function () {  
+    $(window).bind("popstate", function () {  
+        $.getScript(location.href);  
+    });  
+}); 
 
 
 

@@ -1,5 +1,7 @@
 Sipag::Application.routes.draw do
   
+  resources :regions
+
   resources :widgets, only: [:index]
   resources :hello, only: [:index]
 

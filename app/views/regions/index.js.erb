@@ -1,0 +1,8 @@
+  $("#addModal").modal("hide");
+  
+ <% if @ajax_search == true %>
+  $('#table_div').html('<%= escape_javascript(render("tabla_region")) %>');
+<% else %>
+  $('#body_content').html('<%= escape_javascript(render("index")) %>');  
+<% end %>  
+

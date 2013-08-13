@@ -1,0 +1,39 @@
+<table class="table table-bordered">
+  <tr>
+    <th>Name</th>
+    <th>Descripcion</th>
+    <th style="width: 40px;"></th>
+    
+  </tr>
+
+
+
+<% @regions.each do |region| %>
+  <tr>
+    <td><%= region.name %></td>
+    <td><%= region.descripcion %></td>
+    <td  valign="top">
+
+<%= link_to edit_region_path(region), :remote => true, :style=>'height: 14px;', :title=>'Edit', :'data-target'=>"#addModal",  role: "button", :'data-toggle' => "modal" do%> 
+                    <i class="icon-edit"></i> 
+                <% end %> 
+  
+
+    <a style="height: 14px; padding-left: 5px;" title="Delete"
+                    data-backdrop="static" data-keyboard="true"
+                    href="javascript:;"
+                    onclick="show_confirm_modal('<%= region_path(region) %>',
+                    'Está seguro que desea Eliminar la region : <%= region.name%>');"> 
+                    <i class="icon-remove"></i> 
+                </a>
+              </td>
+    
+  </tr>
+<% end %>
+
+
+</table>
+ <%= will_paginate @regions %>
+<br />
+
+

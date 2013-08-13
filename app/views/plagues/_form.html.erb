@@ -16,8 +16,9 @@
 			<% if yield(:boton) == 'Salvar Cambios' %>
 				</div>
 				<div class="modal-footer">
-	                  <a class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</a>
 	                 <%= f.submit yield(:boton), class: "btn btn-primary" %>
+	                  <a class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</a>
+	                 
 	             </div>
 			<% else %>
 					<%= f.submit yield(:boton), class: "btn btn-primary" %>

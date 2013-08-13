@@ -1,0 +1,59 @@
+<% provide(:title, 'Regiones') %>
+<h1>Regiones</h1>
+
+<%= render '/layouts/confirm_modal'%>
+  <script type="text/javascript">
+
+$(function(){
+    
+    $("#quicksearch input").bind("keyup",function(){
+        var form = $("#ajax_search_form");
+        var url = form.attr('action') + '?' + form.serialize();
+        url = url.replace("ajax_search=true", "ajax_search=");
+        history.pushState({
+            path:url
+        }, "", url);
+
+        $.get(form.attr("action"), form.serialize(), null, "script");        
+    });
+
+
+});
+</script>
+<div class="container-fluid">
+      <div class="row-fluid">
+         <div class="span6"> <!-- 1era Columna -->
+           <div class="btn-group span4">
+                  <%= link_to "Nuevo", new_region_path,  :remote => true,
+        :class => "btn btn-primary", :'data-target'=>"#addModal",  role: "button", :'data-toggle' => "modal"%>        
+
+                  
+           </div>  
+        </div> 
+        <%= form_tag(regions_path, :method => 'get', class: "form-search", :id => "ajax_search_form") do %>  
+                     <div id="quicksearch" class="search-box">
+                      <%= text_field_tag :search,  params[:search] %>  
+                      </div>
+                     <%= hidden_field_tag :ajax_search, "true" %>
+        <% end %>  
+        <div id="table_div" class="span12">
+          <%= render 'tabla_region' %>  
+       </div>
+         
+         <!-- MODAL -->
+              <div id="addModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h3 id="myModalLabel">Crear Nueva Region</h3>
+                </div>
+                  <div class="modal-body" id="bodyNewRegion">
+
+                  
+
+                  
+                </div>
+                
+            </div>
+  </div>
+
+</div>

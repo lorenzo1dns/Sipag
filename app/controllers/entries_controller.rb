@@ -96,11 +96,13 @@ class EntriesController < ApplicationController
                @entradaProd = EntryProduct.new(entryProd)
                @entradaProd.entry_id =  @entry.id
                @entradaProd.save
+               invent = Inventary.arel_table
 
-              @inventario = Inventary.find_by_product_id(entryProd[:product_id])
+              @inventario = Inventary.find_by(product_id: entryProd[:product_id])
+              #Inventary.where(invent[:product_id].eq(entryProd[:product_id]).and(invent[:unidad].eq(entryProd[:unidad])).and(invent[:valorUnidad].eq(entryProd[:valorUnidad])))
 
               if !(@inventario.nil?)
-                @inventario.cantidad +=  entryProd[:cantidad].to_f
+                @inventario.cantidad+=  entryProd[:cantidad].to_f
                 @inventario.save
               else
                 @inventario = Inventary.new(product_id: entryProd[:product_id], unidad: entryProd[:unidad],
