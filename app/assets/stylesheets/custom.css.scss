@@ -1,4 +1,4 @@
-@import "bootstrap";
+@import "twitter/bootstrap";
 @import "bootstrap-datetimepicker";
 
 /*mixins, variables*/
@@ -209,6 +209,13 @@ padding:12px;
 	text-align: center;
 	font-weight: bold;
 
+}
+
+.modal {
+
+	
+	margin: 0 0 0 -280px;
+	
 }
 
 // select {

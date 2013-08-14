@@ -10,7 +10,7 @@
 #
 
 class Region < ActiveRecord::Base
-
+	attr_accessible :name, :descripcion
 	validates :name, presence: true
 
 	def self.search(search)  

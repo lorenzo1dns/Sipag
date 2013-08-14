@@ -18,9 +18,8 @@ class User < ActiveRecord::Base
 	 has_secure_password
 
 	before_save :create_remember_token
-	VALID_NAME =  /^[a-zA-Z0-9_]{4,16}$/
-	validates :name, presence: true, length: {maximum: 50, minimum: 4}, 
-				format: { with: VALID_NAME },
+	#VALID_NAME =  /^[a-zA-Z0-9_]{4,16}$/
+	validates :name, presence: true, length: {maximum: 50, minimum: 4}, 				
 				uniqueness: { case_sensitive: false }
 	validates :name_complete, presence: true
 	validates :password, presence: true, length: { minimum: 6}

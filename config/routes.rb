@@ -31,14 +31,14 @@ Sipag::Application.routes.draw do
 
   root to: 'static_pages#home'
 
-  match '/signup', to: 'users#new'
-  match '/signin', to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
-  match '/plaguen', to: 'plagues#new'
-  match '/bodega', to: 'bodega#index'
-  match '/toEntry', to: 'products#toEntry'
-  match '/llevar', to: 'products#llevar'
-  match '/produccion', to: 'bodega#index'
+  get '/signup', to: 'users#new'
+  get '/signin', to: 'sessions#new'
+  get '/signout', to: 'sessions#destroy', via: :delete
+  get '/plaguen', to: 'plagues#new'
+  get '/bodega', to: 'bodega#index'
+  get '/toEntry', to: 'products#toEntry'
+  get '/llevar', to: 'products#llevar'
+  get '/produccion', to: 'bodega#index'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

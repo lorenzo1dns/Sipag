@@ -4,7 +4,7 @@ class RegionsController < ApplicationController
   def index
 
     @ajax_search = params[:ajax_search] == "true" ? true : false
-    @regions = Region.search(params[:search]).paginate(per_page: 5, page: params[:page])
+    @regions = Region.search(params[:search]).paginate(per_page: 10, page: params[:page])
      
 
     respond_to do |format|

@@ -38,10 +38,11 @@ $(function(){
         <% end %>  
         <div id="table_div" class="span12">
           <%= render 'tabla_region' %>  
+          <%= will_paginate @regions %>
        </div>
          
          <!-- MODAL -->
-              <div id="addModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div id="addModal" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                   <h3 id="myModalLabel">Crear Nueva Region</h3>

@@ -184,7 +184,8 @@ function Totales()
     $("#entry_beneficiary_id").val(id);
     $("#beneficiary_name").val(name);    
      $("#findModal").modal("hide");  
-    
+    $('body').removeClass('modal-open');
+$('.modal-backdrop').remove();
 }
 
 function CambiarValor()
