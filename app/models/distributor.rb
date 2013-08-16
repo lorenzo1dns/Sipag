@@ -6,8 +6,8 @@
 #  nombre     :string(255)
 #  direccion  :string(255)
 #  telefono   :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 class Distributor < ActiveRecord::Base

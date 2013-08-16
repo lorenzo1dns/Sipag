@@ -6,8 +6,8 @@
 #  name            :string(255)
 #  admin           :boolean
 #  estado          :boolean          default(FALSE)
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  created_at      :datetime
+#  updated_at      :datetime
 #  name_complete   :string(255)
 #  password_digest :string(255)
 #  remember_token  :string(255)

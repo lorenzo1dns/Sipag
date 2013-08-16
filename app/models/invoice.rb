@@ -7,8 +7,8 @@
 #  distributor_id   :integer
 #  fecha            :date
 #  fechaVencimiento :date
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
+#  created_at       :datetime
+#  updated_at       :datetime
 #  total            :float
 #  totalLempiras    :float
 #

@@ -1,0 +1,42 @@
+<h1>Vista de Lote</h1>
+
+
+<p id="notice"><%= notice %></p>
+
+
+<div class="row-fluid">
+
+      <div class="span6">
+        <strong>Name:</strong>
+        <%= @lot.name %>
+      </div>
+      
+      <div class="span6">
+          <strong>Area:</strong>
+          <%= @lot.area %>
+      </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span6">
+      <strong>Region:</strong>
+      <%= @lot.region_id %>
+    </div>
+
+    <div class="span6">
+      <strong>Unidadmedida:</strong>
+      <%= @lot.unidadmedida %>
+    </div>
+
+</div>
+
+<div class="row-fluid">
+    <div class="span12">
+        <strong>Descripcion:</strong>
+        <%= @lot.descripcion %>
+    </div>
+</div>
+
+
+
+<%= link_to 'Regresar', lots_path %>

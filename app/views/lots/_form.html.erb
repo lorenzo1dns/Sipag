@@ -1,0 +1,46 @@
+<%= form_for(@lot, remote: true) do |f| %>
+  <% if @lot.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lot.errors.count, "error") %> prohibited this lot from being saved:</h2>
+
+      <ul>
+      <% @lot.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="row-fluid">
+  <div class="span6">
+    <%= f.label :name %><br>
+    <%= f.text_field :name,  placeholder: "Nombre de Lote", required: true %>
+  </div>
+  <div class="span6">
+    <%= f.label :area %><br>
+    <%= f.text_field :area,  placeholder: "Dimension del Lote", required: true  %>
+  </div>
+</div>
+
+<div class="row-fluid">
+
+    <div class="span6">
+      <%= f.label :unidadmedida %><br/>
+      <%= f.select(:unidadmedida, [['Hectareas','Hectareas'], ['Manzanas','Manzanas']]) %> 
+    </div>
+    <div class="span6">
+      <%= f.label :region_id %><br>
+      <%= f.collection_select :region_id, Region.all, :id,:name %>
+    </div>
+
+<div class="row-fluid">
+  <div class="span12">
+    <%= f.label :descripcion %><br>
+    <%= f.text_area :descripcion,  placeholder: "Descripcion Reelevante del Lote", required: true  %>
+  </div>
+</div>  
+  <br/>
+  
+<%= f.submit 'Guardar', class: "btn btn-primary" %>
+ 
+<% end %>

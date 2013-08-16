@@ -6,8 +6,8 @@
 #  nombre      :string(255)
 #  descripcion :text
 #  pais        :string(255)
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 
 class Maker < ActiveRecord::Base

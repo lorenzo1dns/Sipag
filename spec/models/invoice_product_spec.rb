@@ -10,8 +10,8 @@
 #  coin_id       :integer
 #  total         :float
 #  totalLempiras :float
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  created_at    :datetime
+#  updated_at    :datetime
 #  unidad        :string(255)
 #  valorUnidad   :string(255)
 #

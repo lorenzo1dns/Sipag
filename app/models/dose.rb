@@ -8,9 +8,9 @@
 #  metodoAplicacion :string(255)
 #  dosis            :string(255)
 #  observacion      :text
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
 #  product_id       :integer
+#  created_at       :datetime
+#  updated_at       :datetime
 #
 
 class Dose < ActiveRecord::Base

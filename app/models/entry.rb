@@ -7,8 +7,8 @@
 #  fecha          :date
 #  tipoEntrada    :string(255)
 #  salida         :integer
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  created_at     :datetime
+#  updated_at     :datetime
 #
 
 class Entry < ActiveRecord::Base

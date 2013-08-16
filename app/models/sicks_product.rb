@@ -5,8 +5,8 @@
 #  id         :integer          not null, primary key
 #  sick_id    :integer
 #  product_id :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 class SicksProduct < ActiveRecord::Base

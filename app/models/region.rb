@@ -5,13 +5,14 @@
 #  id          :integer          not null, primary key
 #  name        :string(255)
 #  descripcion :text
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 
 class Region < ActiveRecord::Base
 	attr_accessible :name, :descripcion
 	validates :name, presence: true
+	has_many :lot
 
 	def self.search(search)  
 	    if search  

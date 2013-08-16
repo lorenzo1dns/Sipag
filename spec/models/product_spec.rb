@@ -6,6 +6,7 @@
 #  name              :string(255)
 #  descripcion       :text
 #  presentacion      :string(255)
+#  tipo_product_id   :integer
 #  ingredienteActivo :string(255)
 #  compatibilidad    :text
 #  modoAccion        :string(255)
@@ -13,10 +14,9 @@
 #  antidoto          :string(255)
 #  maker_id          :integer
 #  distributor_id    :integer
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
+#  created_at        :datetime
+#  updated_at        :datetime
 #  uso               :text
-#  tipo_product_id   :integer
 #
 
 require 'spec_helper'

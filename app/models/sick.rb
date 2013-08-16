@@ -7,8 +7,8 @@
 #  descripcion         :text
 #  familia             :string(255)
 #  danio               :text
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
+#  created_at          :datetime
+#  updated_at          :datetime
 #  avatar_file_name    :string(255)
 #  avatar_content_type :string(255)
 #  avatar_file_size    :integer

@@ -5,8 +5,6 @@ class RegionsController < ApplicationController
 
     @ajax_search = params[:ajax_search] == "true" ? true : false
     @regions = Region.search(params[:search]).paginate(per_page: 10, page: params[:page])
-     
-
     respond_to do |format|
 
       format.html # index.html.erb
@@ -87,7 +85,7 @@ class RegionsController < ApplicationController
   def destroy
     @region = Region.find(params[:id])
     @region.destroy
-    @regions = Region.search(params[:search]).paginate(per_page: 5, page: params[:page])
+    @regions = Region.search(params[:search]).paginate(per_page: 15, page: params[:page])
     
     respond_to do |format|
       format.html { redirect_to regions_url }

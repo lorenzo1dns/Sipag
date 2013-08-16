@@ -7,8 +7,8 @@
 #  product_id  :integer
 #  cantidad    :float
 #  unidad      :string(255)
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  created_at  :datetime
+#  updated_at  :datetime
 #  valorUnidad :string(255)
 #
 
